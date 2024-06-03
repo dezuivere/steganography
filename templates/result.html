@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        {% if image_path %}
+        <h2>Encoded Image</h2>
+        <img src="{{ url_for('uploaded_file', filename=image_path.split('/')[-1]) }}" alt="Encoded Image">
+        <a href="{{ url_for('uploaded_file', filename=image_path.split('/')[-1]) }}" download>Download Encoded Image</a>
+        {% elif hidden_message %}
+        <h2>Hidden Message</h2>
+        <p>{{ hidden_message }}</p>
+        {% endif %}
+        <a href="{{ url_for('index') }}">Go Back</a>
+    </div>
+</body>
+</html>
